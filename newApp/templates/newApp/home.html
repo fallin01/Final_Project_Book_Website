@@ -1,0 +1,30 @@
+
+{% extends 'newApp/base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<header>
+    <h1>Book Website</h1>
+    <input type="button" id="nav-toggle" class="nav-toggle">
+        <nav>
+            <ul>
+                <li><a href="accounts/logout">logout</a></li>
+            </ul>
+        </nav>
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+        </label>
+</header>
+{% if user.is_authenticated %}
+    Welcome {{ user.username }}
+    <p>
+        
+    </p>
+    <p><a href="{% url 'logout' %}">Lout out</a> </p>
+{% else %} 
+    <p>No one is logged in</p>
+    <a href="{% url 'login' %}">Log in</a>
+{% endif %}
+
+{% endblock %}    
